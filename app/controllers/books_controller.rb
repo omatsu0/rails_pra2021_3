@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  protect_from_forgery excepr: [:destroy]
+  before_action :set_book, only: [:show, :destroy]
+  
   def show
     respond_to do |format|
       format.html
@@ -15,7 +18,7 @@ class BooksController < ApplicationController
   end
 
   private
-  
+
   def set_book
     @book = Book.find(params[:id])
   end
